@@ -6497,7 +6497,7 @@ export default function App() {
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
         method:"POST",
-        headers: { "Content-Type":"application/json" },
+        headers: { "Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01" },
         body: JSON.stringify({
           model:"claude-sonnet-4-20250514",
           max_tokens:1000,
@@ -6532,7 +6532,7 @@ export default function App() {
     setActionLoading(true);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate a Sage X3 SQL report for: ${label || reportId}. ${customReport ? "Additional requirements: "+customReport : ""}` }],
           system: REPORT_PROMPT })
@@ -6552,7 +6552,7 @@ export default function App() {
     setActionLoading(true);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate a detailed Sage X3 business process for: ${label || processId}. ${customProcess ? "Additional requirements: "+customProcess : ""}` }],
           system: PROCESS_PROMPT })
@@ -6572,7 +6572,7 @@ export default function App() {
     setActionLoading(true);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate a Sage X3 dashboard for: ${label}. Company profile: ${JSON.stringify(profile)}. ${customDashboard ? "Extra requirements: "+customDashboard : ""}` }],
           system: DASHBOARD_PROMPT })
@@ -6591,7 +6591,7 @@ export default function App() {
     setActionLoading(true);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate best practice recommendations for this company: ${JSON.stringify(profile)}` }],
           system: BESTPRACTICE_PROMPT })
@@ -6611,7 +6611,7 @@ export default function App() {
     setQuizData(null); setQuizAnswers({}); setQuizSubmitted(false);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate a ${learnDifficulty} quiz for Sage X3 topic: ${learnTopic}` }],
           system: QUIZ_PROMPT })
@@ -6630,7 +6630,7 @@ export default function App() {
     setLearnLoading(true); setSummaryData(null);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate a comprehensive study summary for Sage X3 topic: ${learnTopic}` }],
           system: SUMMARY_PROMPT })
@@ -6649,7 +6649,7 @@ export default function App() {
     setLearnLoading(true); setFlashData(null); setFlashIdx(0); setFlashFlipped(false);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{"Content-Type":"application/json"},
+        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
         body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
           messages:[{ role:"user", content:`Generate flashcards for Sage X3 topic: ${learnTopic}` }],
           system: FLASHCARD_PROMPT })
@@ -7288,7 +7288,7 @@ export default function App() {
                         let summary = "";
                         try {
                           const res = await fetch("https://api.anthropic.com/v1/messages", {
-                            method:"POST", headers:{"Content-Type":"application/json"},
+                            method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
                             body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
                               messages:[{ role:"user", content:[
                                 { type:"document", source:{ type:"base64", media_type:"application/pdf", data:base64 } },
@@ -7384,7 +7384,7 @@ export default function App() {
                           `[${e.title}] Code: ${e.errorCode} | Cause: ${e.cause} | Solution: ${e.solution}`).join("\n");
                         try {
                           const res = await fetch("https://api.anthropic.com/v1/messages", {
-                            method:"POST", headers:{"Content-Type":"application/json"},
+                            method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_ANTHROPIC_API_KEY||"","anthropic-version":"2023-06-01"},
                             body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000,
                               system: SYSTEM_PROMPT + "\n\nERROR LIBRARY:\n" + errCtx + "\n\nYou are a Sage X3 troubleshooting expert. Provide a detailed diagnosis and step-by-step fix.",
                               messages:[{ role:"user", content:"Help me fix this Sage X3 error: " + errAiQuery }] })
